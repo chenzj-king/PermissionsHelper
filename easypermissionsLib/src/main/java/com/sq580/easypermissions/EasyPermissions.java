@@ -42,6 +42,13 @@ import java.util.List;
 public class EasyPermissions {
 
     private static final String TAG = "EasyPermissions";
+    private static AlertDialog mAlertDialog;
+
+    public static void hidePermissionsDialog() {
+        if (null != mAlertDialog && mAlertDialog.isShowing()) {
+            mAlertDialog.dismiss();
+        }
+    }
 
     public interface PermissionCallbacks extends
             ActivityCompat.OnRequestPermissionsResultCallback {
@@ -150,7 +157,8 @@ public class EasyPermissions {
                 return;
             }
 
-            AlertDialog dialog = new AlertDialog.Builder(activity)
+            hidePermissionsDialog();
+            mAlertDialog = new AlertDialog.Builder(activity)
                     .setMessage(rationale)
                     .setPositiveButton(positiveButton, new DialogInterface.OnClickListener() {
                         @Override
@@ -161,7 +169,7 @@ public class EasyPermissions {
                     })
                     .setCancelable(false)
                     .create();
-            dialog.show();
+            mAlertDialog.show();
         } else {
             executePermissionsRequest(object, perms, requestCode);
         }
@@ -242,7 +250,8 @@ public class EasyPermissions {
                     return true;
                 }
 
-                AlertDialog dialog = new AlertDialog.Builder(activity)
+                hidePermissionsDialog();
+                mAlertDialog = new AlertDialog.Builder(activity)
                         .setMessage(rationale)
                         .setPositiveButton(positiveButton, new DialogInterface.OnClickListener() {
                             @Override
@@ -258,7 +267,7 @@ public class EasyPermissions {
                         })
                         .setCancelable(false)
                         .create();
-                dialog.show();
+                mAlertDialog.show();
 
                 return true;
             }
