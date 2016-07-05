@@ -45,8 +45,11 @@ public class EasyPermissions {
     private static AlertDialog mAlertDialog;
 
     public static void hidePermissionsDialog() {
-        if (null != mAlertDialog && mAlertDialog.isShowing()) {
-            mAlertDialog.dismiss();
+        if (null != mAlertDialog) {
+            if (mAlertDialog.isShowing()) {
+                mAlertDialog.dismiss();
+            }
+            mAlertDialog = null;
         }
     }
 
@@ -179,7 +182,7 @@ public class EasyPermissions {
      * Handle the result of a permission request, should be called from the calling Activity's
      * {@link ActivityCompat.OnRequestPermissionsResultCallback#onRequestPermissionsResult(int, String[], int[])}
      * method.
-     * <p/>
+     * <p>
      * If any permissions were granted or denied, the Activity will receive the appropriate
      * callbacks through {@link PermissionCallbacks} and methods annotated with
      * {@link AfterPermissionGranted} will be run if appropriate.
@@ -229,7 +232,7 @@ public class EasyPermissions {
     /**
      * If user denied permissions with the flag NEVER ASK AGAIN, open a dialog explaining the
      * permissions rationale again and directing the user to the app settings.
-     * <p/>
+     * <p>
      * NOTE: use of this method is optional, should be called from
      * {@link PermissionCallbacks#onPermissionsDenied(int, List)}
      *
