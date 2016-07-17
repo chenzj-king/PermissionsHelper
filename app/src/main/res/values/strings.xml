@@ -1,9 +1,7 @@
 <resources>
     <string name="app_name">PermissionsTest</string>
-    <string name="rationale_camera">This app needs access to your camera so you can take pictures.</string>
-    <string name="rationale_location_contacts">This app needs access to your location and contacts to know where and who you are.</string>
-    <string name="rationale_sms">This app needs access to your sms to read all your great messages.</string>
-    <string name="rationale_ask_again">This app may not work correctly without the requested permissions. Open the app settings screen to modify app permissions.</string>
-    <string name="setting">Settings</string>
-    <string name="cancel">Cancel</string>
+
+    <string name="rationale_all">为了更好的用户体验，需要申请以下权限，请点击允许。谢谢！</string>
+    <string name="rationale_ask_again">有部分必要权限没有允许，请打开“设置”允许所有权限。谢谢！</string>
+    <string name="setting">设置</string>
 </resources>
