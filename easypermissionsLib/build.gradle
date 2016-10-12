@@ -1,6 +1,10 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.chenzj-king'
+apply plugin: 'com.novoda.bintray-release'
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def bintrayUserVal = properties.getProperty('bintrayUser')
+def bintrayKeyVal = properties.getProperty('bintrayKey')
 
 android {
     compileSdkVersion versions.compileSdk
@@ -24,3 +28,19 @@ dependencies {
     compile libraries.supportAppCompat
 }
 
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+}
+
+publish {
+    userOrg = 'chenzj-king'
+    groupId = 'com.dreamliner.lib'
+    artifactId = 'PermissionsHelper'
+    publishVersion = '1.0.0'
+    desc = 'Oh hi, this is a nice description for a project, right?'
+    website = 'https://github.com/chenzj-king/PermissionsHelper'
+    bintrayUser = bintrayUserVal
+    bintrayKey = bintrayKeyVal
+    dryRun = false
+}
