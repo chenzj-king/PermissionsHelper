@@ -36,9 +36,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Utility to request and check System permissions for apps targeting Android M (API >= 23).
- */
 public class EasyPermissions {
 
     private static final String TAG = "EasyPermissions";
